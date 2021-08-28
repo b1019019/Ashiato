@@ -15,6 +15,7 @@
 		3A8BD82626D9F84C005158B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8BD82426D9F84C005158B6 /* LaunchScreen.storyboard */; };
 		7B44CF6F26DA6341004F0E26 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */; };
 		7B44CF7126DA6457004F0E26 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B44CF7026DA6457004F0E26 /* UIViewController+Extension.swift */; };
+		7B44CF7326DA6571004F0E26 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B44CF7226DA6571004F0E26 /* UIApplication+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3A8BD82726D9F84C005158B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
 		7B44CF7026DA6457004F0E26 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		7B44CF7226DA6571004F0E26 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 			children = (
 				7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */,
 				7B44CF7026DA6457004F0E26 /* UIViewController+Extension.swift */,
+				7B44CF7226DA6571004F0E26 /* UIApplication+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -163,6 +166,7 @@
 				3A8BD81A26D9F84B005158B6 /* AppDelegate.swift in Sources */,
 				3A8BD81C26D9F84B005158B6 /* SceneDelegate.swift in Sources */,
 				7B44CF7126DA6457004F0E26 /* UIViewController+Extension.swift in Sources */,
+				7B44CF7326DA6571004F0E26 /* UIApplication+Extension.swift in Sources */,
 				7B44CF6F26DA6341004F0E26 /* NSObject+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
