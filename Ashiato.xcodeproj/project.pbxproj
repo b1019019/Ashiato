@@ -58,13 +58,29 @@
 			children = (
 				3A8BD81926D9F84B005158B6 /* AppDelegate.swift */,
 				3A8BD81B26D9F84B005158B6 /* SceneDelegate.swift */,
-				3A8BD81D26D9F84B005158B6 /* ViewController.swift */,
+				7B44CF6C26DA62E0004F0E26 /* controller */,
+				7B44CF6D26DA62F1004F0E26 /* extension */,
 				3A8BD81F26D9F84B005158B6 /* Main.storyboard */,
 				3A8BD82226D9F84C005158B6 /* Assets.xcassets */,
 				3A8BD82426D9F84C005158B6 /* LaunchScreen.storyboard */,
 				3A8BD82726D9F84C005158B6 /* Info.plist */,
 			);
 			path = Ashiato;
+			sourceTree = "<group>";
+		};
+		7B44CF6C26DA62E0004F0E26 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				3A8BD81D26D9F84B005158B6 /* ViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		7B44CF6D26DA62F1004F0E26 /* extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
