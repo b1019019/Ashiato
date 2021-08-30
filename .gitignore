@@ -1,0 +1,4 @@
+# .gitignore
+.DS_Store
+Ashiato.xcodeproj/project.xcworkspace/xcuserdata/
+Ashiato.xcodeproj/xcuserdata/hajimeito.xcuserdatad/
