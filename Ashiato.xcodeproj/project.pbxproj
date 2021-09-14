@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A83C48C26EDB90000012CF3 /* TaskEditModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A83C48B26EDB90000012CF3 /* TaskEditModal.storyboard */; };
+		3A83C48E26EDE5E500012CF3 /* TaskEditModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83C48D26EDE5E500012CF3 /* TaskEditModalViewController.swift */; };
+		3A83C49026EE150400012CF3 /* PlaceTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83C48F26EE150400012CF3 /* PlaceTextView.swift */; };
+		3A83C49226EF5AE300012CF3 /* UITextViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A83C49126EF5AE300012CF3 /* UITextViewExtention.swift */; };
 		3A8BD81A26D9F84B005158B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BD81926D9F84B005158B6 /* AppDelegate.swift */; };
 		3A8BD81C26D9F84B005158B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BD81B26D9F84B005158B6 /* SceneDelegate.swift */; };
 		3A8BD81E26D9F84B005158B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8BD81D26D9F84B005158B6 /* ViewController.swift */; };
@@ -19,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A83C48B26EDB90000012CF3 /* TaskEditModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskEditModal.storyboard; sourceTree = "<group>"; };
+		3A83C48D26EDE5E500012CF3 /* TaskEditModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditModalViewController.swift; sourceTree = "<group>"; };
+		3A83C48F26EE150400012CF3 /* PlaceTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTextView.swift; sourceTree = "<group>"; };
+		3A83C49126EF5AE300012CF3 /* UITextViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtention.swift; sourceTree = "<group>"; };
 		3A8BD81626D9F84B005158B6 /* Ashiato.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ashiato.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8BD81926D9F84B005158B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8BD81B26D9F84B005158B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A83C49326EF5BE200012CF3 /* customClass */ = {
+			isa = PBXGroup;
+			children = (
+				3A83C48F26EE150400012CF3 /* PlaceTextView.swift */,
+			);
+			path = customClass;
+			sourceTree = "<group>";
+		};
 		3A8BD80D26D9F84B005158B6 = {
 			isa = PBXGroup;
 			children = (
@@ -64,9 +80,11 @@
 			children = (
 				3A8BD81926D9F84B005158B6 /* AppDelegate.swift */,
 				3A8BD81B26D9F84B005158B6 /* SceneDelegate.swift */,
+				3A83C49326EF5BE200012CF3 /* customClass */,
 				7B44CF6C26DA62E0004F0E26 /* controller */,
 				7B44CF6D26DA62F1004F0E26 /* extension */,
 				3A8BD81F26D9F84B005158B6 /* Main.storyboard */,
+				3A83C48B26EDB90000012CF3 /* TaskEditModal.storyboard */,
 				3A8BD82226D9F84C005158B6 /* Assets.xcassets */,
 				3A8BD82426D9F84C005158B6 /* LaunchScreen.storyboard */,
 				3A8BD82726D9F84C005158B6 /* Info.plist */,
@@ -78,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				3A8BD81D26D9F84B005158B6 /* ViewController.swift */,
+				3A83C48D26EDE5E500012CF3 /* TaskEditModalViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -87,6 +106,7 @@
 			children = (
 				7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */,
 				7B44CF7026DA6457004F0E26 /* UIViewController+Extension.swift */,
+				3A83C49126EF5AE300012CF3 /* UITextViewExtention.swift */,
 				7B44CF7226DA6571004F0E26 /* UIApplication+Extension.swift */,
 			);
 			path = extension;
@@ -150,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8BD82626D9F84C005158B6 /* LaunchScreen.storyboard in Resources */,
+				3A83C48C26EDB90000012CF3 /* TaskEditModal.storyboard in Resources */,
 				3A8BD82326D9F84C005158B6 /* Assets.xcassets in Resources */,
 				3A8BD82126D9F84B005158B6 /* Main.storyboard in Resources */,
 			);
@@ -162,10 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A83C49226EF5AE300012CF3 /* UITextViewExtention.swift in Sources */,
 				3A8BD81E26D9F84B005158B6 /* ViewController.swift in Sources */,
 				3A8BD81A26D9F84B005158B6 /* AppDelegate.swift in Sources */,
 				3A8BD81C26D9F84B005158B6 /* SceneDelegate.swift in Sources */,
+				3A83C49026EE150400012CF3 /* PlaceTextView.swift in Sources */,
 				7B44CF7126DA6457004F0E26 /* UIViewController+Extension.swift in Sources */,
+				3A83C48E26EDE5E500012CF3 /* TaskEditModalViewController.swift in Sources */,
 				7B44CF7326DA6571004F0E26 /* UIApplication+Extension.swift in Sources */,
 				7B44CF6F26DA6341004F0E26 /* NSObject+Extension.swift in Sources */,
 			);
