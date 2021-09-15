@@ -20,7 +20,7 @@ class TaskEditModalViewController: UIViewController {
         textViewDescribeAchievementStandard.delegate = self
         textViewDescribeMemo.delegate = self
         textFieldShowTaskName.delegate = self
- 
+        
         textViewDescribeNecessity.placeHolder = "なぜこのタスクが必要か書こう！"
         textViewDescribeAchievementStandard.placeHolder = "何をもって完了とするのか書こう！"
         textViewDescribeMemo.placeHolder = "タスクに関するメモを書こう！"
@@ -44,34 +44,28 @@ class TaskEditModalViewController: UIViewController {
     
     @objc
     private func keyboardWillShow(sender: NSNotification) {
-        //setumeiTextViewがFirstResponderである場合(setumeiTextViewがイベント処理中(編集中)である場合?)
-        
-        if textViewDescribeNecessity.isFirstResponder || textViewDescribeAchievementStandard.isFirstResponder || textViewDescribeMemo.isFirstResponder {
-            //sender.userInfoは通知を送る際に追加で送られるデータ
-            guard let userInfo = sender.userInfo else { return }
-            //durationは間隔という意味
-            //keyboardAnimationDurationUserInfoKeyはキーボードの表示アニメーションにかかる時間
-            let duration: Float = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).floatValue
-            //キーボードの高さを取得
-              guard let keyboardRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-            
-            //CGAffineTransformによるビューの縦移動
-            //CGAffineTransformによる移動のメリット
-            UIView.animate(withDuration: TimeInterval(duration), animations: { () -> Void in
-                var textViewMinY: CGFloat = 0
-                if self.textViewDescribeNecessity.isFirstResponder {
-                    textViewMinY = self.view.convert(self.textViewDescribeNecessity.frame, from: self.textViewDescribeNecessity.superview).minY
-                } else if self.textViewDescribeAchievementStandard.isFirstResponder {
-                    textViewMinY = self.view.convert(self.textViewDescribeAchievementStandard.frame, from: self.textViewDescribeAchievementStandard.superview).minY
-                } else if self.textViewDescribeMemo.isFirstResponder {
-                    textViewMinY = self.view.convert(self.textViewDescribeMemo.frame, from: self.textViewDescribeMemo.superview).minY
-                }
-                let destinationY = (self.view.frame.height - keyboardRect.height) / 2
-                let transform = CGAffineTransform(translationX: 0, y: destinationY - textViewMinY)
-                self.view.transform = transform
+        //setumeiTextViewがFirstResponderである場合(setumeiTextViewがイベント処理中(編集中)である場合)
+        [textViewDescribeNecessity,textViewDescribeAchievementStandard,textViewDescribeMemo].forEach {
+            guard let textView = $0 else { return }
+            if textView.isFirstResponder {
+                //sender.userInfoは通知を送る際に追加で送られるデータ
+                guard let userInfo = sender.userInfo else { return }
+                //durationは間隔という意味
+                //keyboardAnimationDurationUserInfoKeyはキーボードの表示アニメーションにかかる時間
+                let duration: Float = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).floatValue
+                //キーボードのサイズを取得
+                guard let keyboardRect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
                 
-            })
- 
+                //CGAffineTransformによるビューの縦移動
+                UIView.animate(withDuration: TimeInterval(duration), animations: { () -> Void in
+                    
+                    let textViewMinY = self.view.convert(textView.frame, from: textView.superview).minY
+                    let destinationY = (self.view.frame.height - keyboardRect.height) / 2
+                    let transform = CGAffineTransform(translationX: 0, y: destinationY - textViewMinY)
+                    self.view.transform = transform
+                    
+                })
+            }
         }
     }
     
@@ -81,14 +75,11 @@ class TaskEditModalViewController: UIViewController {
         let duration: Float = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as! NSNumber).floatValue
         UIView.animate(withDuration: TimeInterval(duration), animations: { () -> Void in
             self.view.transform = CGAffineTransform.identity
-            //self.view.center.y -= self.view.frame.minY - self.textViewDescribeMemo.frame.minY
         })
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        //注目されているテキストビューがない場合、全てのテキストビューに対して、ある場合、そのテキストビューに対して処理を行うようにする！
         
         textViewDescribeNecessity.fitTextToIntrinsicContentSize()
         textViewDescribeAchievementStandard.fitTextToIntrinsicContentSize()
@@ -99,7 +90,6 @@ class TaskEditModalViewController: UIViewController {
         textViewDescribeMemo.removeSpaceOutsideRange()
         
     }
-    
 }
 
 extension TaskEditModalViewController: UITextFieldDelegate {
@@ -115,6 +105,7 @@ extension TaskEditModalViewController: UITextViewDelegate {
     //他の場所をタップしたらキーボードが消える
     //他のタスクビューにも実装
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         if textViewDescribeNecessity.isFirstResponder {
             textViewDescribeNecessity.resignFirstResponder()
         } else if textViewDescribeAchievementStandard.isFirstResponder {
