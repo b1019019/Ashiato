@@ -1,30 +1,30 @@
 //
-//  TaskEditModalViewController.swift
+//  TaskCreateModalViewController.swift
 //  Ashiato
 //
-//  Created by 山田純平 on 2021/09/12.
+//  Created by 山田純平 on 2021/09/17.
 //
 
 import UIKit
 
-enum DisplayModeTaskEditModal {
+enum DisplayModeTaskCreateModal {
     case common
     case nextTask
     case branchTask
 }
 
-class TaskEditModalViewController: UIViewController {
+class TaskCreateModalViewController: UIViewController {
     @IBOutlet weak var textViewDescribeNecessity: PlaceTextView!
     @IBOutlet weak var textViewDescribeAchievementStandard: PlaceTextView!
     @IBOutlet weak var textViewDescribeMemo: PlaceTextView!
+    
     @IBOutlet weak var textFieldShowTaskName: UITextField!
-    @IBOutlet weak var buttonCreateNextTask: UIButton!
-    @IBOutlet weak var buttonCreateBranchTask: UIButton!
     @IBOutlet weak var textFieldEditStartDate: DatePickTextField!
     @IBOutlet weak var textFieldEditGoalDate: DatePickTextField!
-    @IBOutlet weak var statusChangeButton: StatusChangeButton!
     
-    var displayMode:DisplayModeTaskEditModal = .common
+    
+    
+    var displayMode:DisplayModeTaskCreateModal = .common
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,9 +49,6 @@ class TaskEditModalViewController: UIViewController {
         } else if displayMode == .branchTask {
             //分岐元タスク名をタスク名表示テキストフィールドの上のラベルに書き込み
         }
-        //もし延長タスクを所持しているなら、延長タスク作成ボタンを表示しない
-        statusChangeButton.isEnabled = false
-        statusChangeButton.isHidden = true
         
         
         
@@ -68,9 +65,6 @@ class TaskEditModalViewController: UIViewController {
             object: nil)
     }
     
-    @IBAction func statusChangeButton(_ sender: Any) {
-        statusChangeButton.statusChange()
-    }
     @objc
     private func keyboardWillShow(sender: NSNotification) {
         //setumeiTextViewがFirstResponderである場合(setumeiTextViewがイベント処理中(編集中)である場合)
@@ -119,22 +113,9 @@ class TaskEditModalViewController: UIViewController {
         textViewDescribeMemo.removeSpaceOutsideRange()
         
     }
-    @IBAction func tapButtonCreateNextTask(_ sender: Any) {
-        
-        let modalStoryBoard = UIStoryboard(name: "TaskCreateModal", bundle: nil)
-        
-        guard let modalViewController = modalStoryBoard.instantiateInitialViewController() as? TaskCreateModalViewController else { return }
-        
-        present(modalViewController, animated: true)
-        
-        
-    }
-    @IBAction func tapButtonCreateBranchTask(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
 }
 
-extension TaskEditModalViewController: UITextFieldDelegate {
+extension TaskCreateModalViewController: UITextFieldDelegate {
     //ユーザーが戻るボタンをタップした時に呼び出される。テキスト入力決定キー(return)でも呼び出される？
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //キーボードを閉じるメソッド
@@ -143,7 +124,7 @@ extension TaskEditModalViewController: UITextFieldDelegate {
     }
 }
 
-extension TaskEditModalViewController: UITextViewDelegate {
+extension TaskCreateModalViewController: UITextViewDelegate {
     //他の場所をタップしたらキーボードが消える
     //他のタスクビューにも実装
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
