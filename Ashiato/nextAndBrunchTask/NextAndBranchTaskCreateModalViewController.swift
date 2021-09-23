@@ -1,31 +1,31 @@
 //
-//  TaskEditModalViewController.swift
+//  NextAndBranchTask.swift
 //  Ashiato
 //
-//  Created by 山田純平 on 2021/09/12.
+//  Created by 山田純平 on 2021/09/22.
 //
-
 import UIKit
 
-enum DisplayModeTaskEditModal {
+enum DisplayModeNextAndBranchTaskCreateModal {
     case common
     case nextTask
     case branchTask
 }
 
-class TaskEditModalViewController: UIViewController {
+class NextAndBranchTaskCreateModalViewController: UIViewController {
+    
     @IBOutlet weak var textViewDescribeNecessity: PlaceTextView!
     @IBOutlet weak var textViewDescribeAchievementStandard: PlaceTextView!
     @IBOutlet weak var textViewDescribeMemo: PlaceTextView!
     @IBOutlet weak var textFieldShowTaskName: UITextField!
-    @IBOutlet weak var buttonCreateNextTask: UIButton!
-    @IBOutlet weak var buttonCreateBranchTask: UIButton!
     @IBOutlet weak var textFieldEditStartDate: DatePickTextField!
     @IBOutlet weak var textFieldEditGoalDate: DatePickTextField!
-    @IBOutlet weak var statusChangeButton: StatusChangeButton!
     
-    var displayMode:DisplayModeTaskEditModal = .common
-    var taskData: TaskData?
+    
+    
+    
+    var displayMode: DisplayModeNextAndBranchTaskCreateModal = .common
+    var parentTaskData: TaskData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,42 +37,13 @@ class TaskEditModalViewController: UIViewController {
         textFieldEditStartDate.setup(viewWidth: view.frame.width, defaultDate: Date())
         textFieldEditGoalDate.setup(viewWidth: view.frame.width, defaultDate: Date())
         
-        if let t = taskData {
-            textFieldShowTaskName.text = t.title
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy年MM月dd日"
-            textFieldEditStartDate.text = "\(formatter.string(from: t.startDate))"
-            textFieldEditGoalDate.text = "\(formatter.string(from: t.completeDate))"
-            textViewDescribeNecessity.text = t.necessity
-            textViewDescribeAchievementStandard.text = t.achievementStandard
-            textViewDescribeMemo.text = t.memo
-            
-            switch t.status {
-            case 0:
-                statusChangeButton.displayMode = .doing
-            case 1:
-                statusChangeButton.displayMode = .complete
-            case 2:
-                statusChangeButton.displayMode = .cancel
-            default:
-                break
-            }
-            statusChangeButton.setup()
-            
-            //もし延長タスクを所持しているなら、延長タスク作成ボタンを表示しない
-            if t.nextTask != nil {
-                buttonCreateNextTask.isEnabled = false
-                buttonCreateNextTask.isHidden = true
-            }
-            
-            
+        if displayMode == .nextTask {
+            textFieldEditStartDate.datePicker.minimumDate = parentTaskData?.completeDate
+        } else if displayMode == .branchTask {
+            textFieldEditStartDate.datePicker.minimumDate = parentTaskData?.startDate
         }
         
-        if displayMode == .nextTask {
-            //延長元タスク名をタスク名表示テキストフィールドの上のラベルに書き込み
-        } else if displayMode == .branchTask {
-            //分岐元タスク名をタスク名表示テキストフィールドの上のラベルに書き込み
-        }
+        
         
         
         textViewDescribeNecessity.placeHolder = "なぜこのタスクが必要か書こう！"
@@ -82,9 +53,6 @@ class TaskEditModalViewController: UIViewController {
         textViewDidChange(textViewDescribeNecessity)
         textViewDidChange(textViewDescribeAchievementStandard)
         textViewDidChange(textViewDescribeMemo)
-        
-        textFieldEditStartDate.datePicker.minimumDate = taskData?.startDate
-        textFieldEditGoalDate.datePicker.minimumDate = taskData?.completeDate
         
         
         //キーボード出現、消滅の通知を受け取る
@@ -102,41 +70,46 @@ class TaskEditModalViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        taskData?.title = textFieldShowTaskName.text ?? ""
-        taskData?.achievementStandard = textViewDescribeAchievementStandard.text
-        taskData?.necessity = textViewDescribeNecessity.text
-        taskData?.memo = textViewDescribeMemo.text
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy年MM月dd日"
-        guard let startDate =  formatter.date(from: textFieldEditStartDate.text ?? "") else {
-            return
-        }
-        guard let completeDate =  formatter.date(from: textFieldEditGoalDate.text ?? "") else {
-            return
-        }
+        let title = textFieldShowTaskName.text ?? ""
+        let memo = textViewDescribeMemo.text ?? ""
+        let achievementStandard = textViewDescribeAchievementStandard.text ?? ""
+        let necessity = textViewDescribeNecessity.text ?? ""
+        guard let startDate = formatter.date(from: textFieldEditStartDate.text ?? "") else { return }
+        guard let completeDate = formatter.date(from: textFieldEditGoalDate.text ?? "") else { return }
+        let taskData = TaskData(title: title, memo: memo, achievementStandard: achievementStandard, necessity: necessity, startDate: startDate, completeDate: completeDate, status: 0, nextTask: nil, branchTask: nil, extendHistory: nil)
         
-        if taskData!.completeDate < completeDate {
-            if taskData?.extendHistory == nil {
-                taskData?.extendHistory = [taskData!.completeDate]
-            } else {
-                taskData?.extendHistory?.append(taskData!.completeDate)
-            }
+        ////
+        if displayMode == .nextTask {
+            parentTaskData?.nextTask = taskData
             
+        } else if displayMode == .branchTask {
+            if parentTaskData?.branchTask != nil {
+                parentTaskData?.branchTask?.append(taskData)
+            } else {
+                parentTaskData?.branchTask = [taskData]
+            }
+            taskData.parentTask = parentTaskData
+            
+            let index = taskDataArray.firstIndex(where: { $0 === parentTaskData })!
+            taskDataArray.insert(taskData, at: index + 1)
         }
         
-        taskData?.startDate = startDate
-        taskData?.completeDate = completeDate
-        taskData?.status = statusChangeButton.displayMode!.rawValue
         
+        print(presentingViewController)
         if let viewController = presentingViewController as? ViewController {
             viewController.collectionView.reloadData()
+        } else if let viewController = presentingViewController as? TaskEditModalViewController {
+            viewController.buttonCreateNextTask.isEnabled = false
+            viewController.buttonCreateNextTask.isHidden = true
         }
+        
+        print("disappear")
+        print(parentTaskData?.nextTask)
         
     }
     
-    @IBAction func statusChangeButton(_ sender: Any) {
-        statusChangeButton.statusChange()
-    }
     @objc
     private func keyboardWillShow(sender: NSNotification) {
         //setumeiTextViewがFirstResponderである場合(setumeiTextViewがイベント処理中(編集中)である場合)
@@ -187,27 +160,20 @@ class TaskEditModalViewController: UIViewController {
     }
     @IBAction func tapButtonCreateNextTask(_ sender: Any) {
         
-        let modalStoryBoard = UIStoryboard(name: "NextAndBranchTaskCreateModal", bundle: nil)
+        let modalStoryBoard = UIStoryboard(name: "TaskCreateModal", bundle: nil)
         
-        guard let modalViewController = modalStoryBoard.instantiateInitialViewController() as? NextAndBranchTaskCreateModalViewController else { return }
-        modalViewController.displayMode = .nextTask
-        modalViewController.parentTaskData = taskData
+        guard let modalViewController = modalStoryBoard.instantiateInitialViewController() as? TaskCreateModalViewController else { return }
+        
         present(modalViewController, animated: true)
         
         
     }
     @IBAction func tapButtonCreateBranchTask(_ sender: Any) {
-        let modalStoryBoard = UIStoryboard(name: "NextAndBranchTaskCreateModal", bundle: nil)
-        
-        guard let modalViewController = modalStoryBoard.instantiateInitialViewController() as? NextAndBranchTaskCreateModalViewController else { return }
-        modalViewController.displayMode = .branchTask
-        modalViewController.parentTaskData = taskData
-        present(modalViewController,animated: true)
-        
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
-extension TaskEditModalViewController: UITextFieldDelegate {
+extension NextAndBranchTaskCreateModalViewController: UITextFieldDelegate {
     //ユーザーが戻るボタンをタップした時に呼び出される。テキスト入力決定キー(return)でも呼び出される？
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //キーボードを閉じるメソッド
@@ -216,7 +182,7 @@ extension TaskEditModalViewController: UITextFieldDelegate {
     }
 }
 
-extension TaskEditModalViewController: UITextViewDelegate {
+extension NextAndBranchTaskCreateModalViewController: UITextViewDelegate {
     //他の場所をタップしたらキーボードが消える
     //他のタスクビューにも実装
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

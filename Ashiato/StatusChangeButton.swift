@@ -7,14 +7,15 @@
 
 import UIKit
 
-enum DisplayModeStatusChangeButton {
-    case doing
-    case complete
-    case cancel
+enum DisplayModeStatusChangeButton: Int {
+    case doing = 0
+    case complete = 1
+    case cancel = 2
 }
 
 class StatusChangeButton: UIButton {
-    var displayMode: DisplayModeStatusChangeButton = .doing
+    var displayMode: DisplayModeStatusChangeButton?
+    /*
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
@@ -25,7 +26,7 @@ class StatusChangeButton: UIButton {
         setup()
         
     }
-    
+    */
     func setup() {
         layer.cornerRadius = 15
         setTitleColor(UIColor.black, for: .normal)

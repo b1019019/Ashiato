@@ -44,13 +44,6 @@ class TaskCreateModalViewController: UIViewController {
         textViewDidChange(textViewDescribeAchievementStandard)
         textViewDidChange(textViewDescribeMemo)
         
-        if displayMode == .nextTask {
-            //延長元タスク名をタスク名表示テキストフィールドの上のラベルに書き込み
-        } else if displayMode == .branchTask {
-            //分岐元タスク名をタスク名表示テキストフィールドの上のラベルに書き込み
-        }
-        
-        
         
         //キーボード出現、消滅の通知を受け取る
         NotificationCenter.default.addObserver(
@@ -63,6 +56,27 @@ class TaskCreateModalViewController: UIViewController {
             selector: #selector(keyboardWillHide(sender:)),
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日"
+        let title = textFieldShowTaskName.text ?? ""
+        let memo = textViewDescribeMemo.text ?? ""
+        let achievementStandard = textViewDescribeAchievementStandard.text ?? ""
+        let necessity = textViewDescribeNecessity.text ?? ""
+        guard let startDate = formatter.date(from: textFieldEditStartDate.text ?? "") else { return }
+        guard let completeDate = formatter.date(from: textFieldEditGoalDate.text ?? "") else { return }
+        let taskData = TaskData(title: title, memo: memo, achievementStandard: achievementStandard, necessity: necessity, startDate: startDate, completeDate: completeDate, status: 0, nextTask: nil, branchTask: nil, extendHistory: nil)
+        taskDataArray.append(taskData)
+        guard let viewController = presentingViewController as? ViewController else {
+            return
+        }
+        viewController.collectionView.reloadData()
+        
+        
+        print("disappear")
     }
     
     @objc
