@@ -18,6 +18,8 @@
 		3A8BD82126D9F84B005158B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8BD81F26D9F84B005158B6 /* Main.storyboard */; };
 		3A8BD82326D9F84C005158B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8BD82226D9F84C005158B6 /* Assets.xcassets */; };
 		3A8BD82626D9F84C005158B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8BD82426D9F84C005158B6 /* LaunchScreen.storyboard */; };
+		3ADBF12426FCC9FE007E9EFD /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBF12326FCC9FE007E9EFD /* UIViewController+Extension.swift */; };
+		3ADBF12626FCCBFD007E9EFD /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADBF12526FCCBFD007E9EFD /* UICollectionView+Extension.swift */; };
 		3AE2BF1026F40D4B00218532 /* TaskCreateModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE2BF0F26F40D4B00218532 /* TaskCreateModal.storyboard */; };
 		3AE2BF1226F4116D00218532 /* TaskCreateModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2BF1126F4116D00218532 /* TaskCreateModalViewController.swift */; };
 		3AE2BF1A26F4469000218532 /* StatusChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2BF1926F4469000218532 /* StatusChangeButton.swift */; };
@@ -31,7 +33,6 @@
 		3AE2BF5226FADCB500218532 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2BF5026FADCB500218532 /* CustomTableViewCell.swift */; };
 		3AE2BF5326FADCB500218532 /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AE2BF5126FADCB500218532 /* CustomTableViewCell.xib */; };
 		3AE2BF5526FADCE500218532 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2BF5426FADCE500218532 /* TaskView.swift */; };
-		3AE2BF5726FAE30400218532 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2BF5626FAE30400218532 /* UICollectionView+Extension.swift */; };
 		3AE2BF5C26FB5F0B00218532 /* NextAndBranchTaskCreateModal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AE2BF5B26FB5F0B00218532 /* NextAndBranchTaskCreateModal.storyboard */; };
 		3AE2BF5E26FB609500218532 /* NextAndBranchTaskCreateModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE2BF5D26FB609500218532 /* NextAndBranchTaskCreateModalViewController.swift */; };
 		7B44CF6F26DA6341004F0E26 /* NSObject+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */; };
@@ -52,6 +53,8 @@
 		3A8BD82226D9F84C005158B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A8BD82526D9F84C005158B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8BD82726D9F84C005158B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3ADBF12326FCC9FE007E9EFD /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "../group/UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		3ADBF12526FCCBFD007E9EFD /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		3AE2BF0F26F40D4B00218532 /* TaskCreateModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaskCreateModal.storyboard; sourceTree = "<group>"; };
 		3AE2BF1126F4116D00218532 /* TaskCreateModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCreateModalViewController.swift; sourceTree = "<group>"; };
 		3AE2BF1926F4469000218532 /* StatusChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusChangeButton.swift; sourceTree = "<group>"; };
@@ -65,7 +68,6 @@
 		3AE2BF5026FADCB500218532 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		3AE2BF5126FADCB500218532 /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		3AE2BF5426FADCE500218532 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
-		3AE2BF5626FAE30400218532 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		3AE2BF5B26FB5F0B00218532 /* NextAndBranchTaskCreateModal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NextAndBranchTaskCreateModal.storyboard; sourceTree = "<group>"; };
 		3AE2BF5D26FB609500218532 /* NextAndBranchTaskCreateModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextAndBranchTaskCreateModalViewController.swift; sourceTree = "<group>"; };
 		7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Extension.swift"; sourceTree = "<group>"; };
@@ -83,6 +85,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A7ECAC0270971ED00F627DC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3AE2BF4826FADABF00218532 /* TaskData.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		3A7ECAC12709723100F627DC /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				3AE2BF5D26FB609500218532 /* NextAndBranchTaskCreateModalViewController.swift */,
+				3AE2BF4D26FADC0500218532 /* CustomCollectionViewCell.xib */,
+				3AE2BF5126FADCB500218532 /* CustomTableViewCell.xib */,
+				3AE2BF1E26F729A700218532 /* TaskNotificationTableViewCell.xib */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		3A7ECAC22709723D00F627DC /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				3A8BD81F26D9F84B005158B6 /* Main.storyboard */,
+				3AE2BF1B26F7209C00218532 /* AccountScreenViewController.storyboard */,
+				3A83C48B26EDB90000012CF3 /* TaskEditModal.storyboard */,
+				3AE2BF0F26F40D4B00218532 /* TaskCreateModal.storyboard */,
+				3AE2BF5B26FB5F0B00218532 /* NextAndBranchTaskCreateModal.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		3A8BD80D26D9F84B005158B6 = {
 			isa = PBXGroup;
 			children = (
@@ -102,58 +135,34 @@
 		3A8BD81826D9F84B005158B6 /* Ashiato */ = {
 			isa = PBXGroup;
 			children = (
-				3AE2BF4326FAD5CE00218532 /* group */,
+				3A7ECAC0270971ED00F627DC /* model */,
 				3A8BD81926D9F84B005158B6 /* AppDelegate.swift */,
 				3A8BD81B26D9F84B005158B6 /* SceneDelegate.swift */,
-				3A83C48F26EE150400012CF3 /* PlaceTextView.swift */,
-				3A371DA826F1D59100535A2F /* DatePickTextField.swift */,
-				3AE2BF1926F4469000218532 /* StatusChangeButton.swift */,
-				3AE2BF5A26FB5D8B00218532 /* nextAndBrunchTask */,
 				7B44CF6C26DA62E0004F0E26 /* controller */,
 				7B44CF6D26DA62F1004F0E26 /* extension */,
-				3A8BD81F26D9F84B005158B6 /* Main.storyboard */,
-				3AE2BF1B26F7209C00218532 /* AccountScreenViewController.storyboard */,
-				3AE2BF2126F73AEB00218532 /* AccountScreenViewController.swift */,
-				3AE2BF1D26F729A700218532 /* TaskNotificationTableViewCell.swift */,
-				3AE2BF1E26F729A700218532 /* TaskNotificationTableViewCell.xib */,
 				3A8BD82226D9F84C005158B6 /* Assets.xcassets */,
-				3A83C48B26EDB90000012CF3 /* TaskEditModal.storyboard */,
-				3AE2BF0F26F40D4B00218532 /* TaskCreateModal.storyboard */,
 				3A8BD82426D9F84C005158B6 /* LaunchScreen.storyboard */,
 				3A8BD82726D9F84C005158B6 /* Info.plist */,
 			);
 			path = Ashiato;
 			sourceTree = "<group>";
 		};
-		3AE2BF4326FAD5CE00218532 /* group */ = {
-			isa = PBXGroup;
-			children = (
-				3AE2BF4826FADABF00218532 /* TaskData.swift */,
-				3AE2BF5426FADCE500218532 /* TaskView.swift */,
-				3AE2BF4C26FADC0500218532 /* CustomCollectionViewCell.swift */,
-				3AE2BF4D26FADC0500218532 /* CustomCollectionViewCell.xib */,
-				3AE2BF5026FADCB500218532 /* CustomTableViewCell.swift */,
-				3AE2BF5126FADCB500218532 /* CustomTableViewCell.xib */,
-				3AE2BF5626FAE30400218532 /* UICollectionView+Extension.swift */,
-			);
-			path = group;
-			sourceTree = "<group>";
-		};
-		3AE2BF5A26FB5D8B00218532 /* nextAndBrunchTask */ = {
-			isa = PBXGroup;
-			children = (
-				3AE2BF5B26FB5F0B00218532 /* NextAndBranchTaskCreateModal.storyboard */,
-				3AE2BF5D26FB609500218532 /* NextAndBranchTaskCreateModalViewController.swift */,
-			);
-			path = nextAndBrunchTask;
-			sourceTree = "<group>";
-		};
 		7B44CF6C26DA62E0004F0E26 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				3A7ECAC22709723D00F627DC /* storyboard */,
+				3A7ECAC12709723100F627DC /* xib */,
 				3A8BD81D26D9F84B005158B6 /* ViewController.swift */,
+				3A83C48F26EE150400012CF3 /* PlaceTextView.swift */,
+				3AE2BF1926F4469000218532 /* StatusChangeButton.swift */,
+				3A371DA826F1D59100535A2F /* DatePickTextField.swift */,
+				3AE2BF5026FADCB500218532 /* CustomTableViewCell.swift */,
+				3AE2BF4C26FADC0500218532 /* CustomCollectionViewCell.swift */,
+				3AE2BF2126F73AEB00218532 /* AccountScreenViewController.swift */,
+				3AE2BF5426FADCE500218532 /* TaskView.swift */,
 				3A83C48D26EDE5E500012CF3 /* TaskEditModalViewController.swift */,
 				3AE2BF1126F4116D00218532 /* TaskCreateModalViewController.swift */,
+				3AE2BF1D26F729A700218532 /* TaskNotificationTableViewCell.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -161,9 +170,11 @@
 		7B44CF6D26DA62F1004F0E26 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				3ADBF12526FCCBFD007E9EFD /* UICollectionView+Extension.swift */,
 				7B44CF6E26DA6341004F0E26 /* NSObject+Extension.swift */,
 				3A83C49126EF5AE300012CF3 /* UITextView+Extension.swift */,
 				7B44CF7226DA6571004F0E26 /* UIApplication+Extension.swift */,
+				3ADBF12326FCC9FE007E9EFD /* UIViewController+Extension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -253,6 +264,7 @@
 				3AE2BF1226F4116D00218532 /* TaskCreateModalViewController.swift in Sources */,
 				3A8BD81C26D9F84B005158B6 /* SceneDelegate.swift in Sources */,
 				3AE2BF4926FADABF00218532 /* TaskData.swift in Sources */,
+				3ADBF12426FCC9FE007E9EFD /* UIViewController+Extension.swift in Sources */,
 				3A83C49026EE150400012CF3 /* PlaceTextView.swift in Sources */,
 				3AE2BF5E26FB609500218532 /* NextAndBranchTaskCreateModalViewController.swift in Sources */,
 				3AE2BF4E26FADC0500218532 /* CustomCollectionViewCell.swift in Sources */,
@@ -260,8 +272,8 @@
 				3A83C48E26EDE5E500012CF3 /* TaskEditModalViewController.swift in Sources */,
 				3AE2BF1A26F4469000218532 /* StatusChangeButton.swift in Sources */,
 				3AE2BF2226F73AEB00218532 /* AccountScreenViewController.swift in Sources */,
+				3ADBF12626FCCBFD007E9EFD /* UICollectionView+Extension.swift in Sources */,
 				7B44CF7326DA6571004F0E26 /* UIApplication+Extension.swift in Sources */,
-				3AE2BF5726FAE30400218532 /* UICollectionView+Extension.swift in Sources */,
 				7B44CF6F26DA6341004F0E26 /* NSObject+Extension.swift in Sources */,
 				3AE2BF5526FADCE500218532 /* TaskView.swift in Sources */,
 			);
